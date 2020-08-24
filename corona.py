@@ -25,26 +25,43 @@ class CovidReport:
   def get_all_countries(self):
     if(self.select_country.lower() == 'kenya'):
       return self.get_kenya_data()
+
     if(self.select_country.lower() == 'rwanda'):
       return self.get_rwanda_data()
 
-  def get_kenya_data(self):
+    if(self.select_country.lower() == 'uganda'):
+      return self.get_uganda_data()
+
+    if(self.select_country.lower() == 'tanzania'):
+      return self.get_tanzania_data()
+
+    if(self.select_country.lower() == 'mauritius'):
+      return self.get_mauritius_data()
+
+  def get_data(self, country):
     change_case_to_lower = self.select_country.lower()
-    if( change_case_to_lower != 'kenya' or change_case_to_lower == ''):
+    if( change_case_to_lower != country or change_case_to_lower == ''):
       print('Invalid input -- Please select the correct country name')
     else:
-      kenya_cases = self.covid.get_status_by_country_name("kenya")
-      confirmed, active, recovered, deaths = [kenya_cases[k] for k in ('confirmed', 'active', 'recovered', 'deaths')]
+      country_cases = self.covid.get_status_by_country_name(country)
+      confirmed, active, recovered, deaths = [country_cases[k] for k in ('confirmed', 'active', 'recovered', 'deaths')]
       print(f' Total Confirmed cases: {confirmed} \n Total Active cases: {active} \n Total Recovered cases: {recovered} \n Total Deaths: {deaths}')
 
+
+  def get_kenya_data(self):
+    return self.get_data('kenya')
+
   def get_rwanda_data(self):
-    change_case_to_lower = self.select_country.lower()
-    if( change_case_to_lower != 'rwanda' or change_case_to_lower == ''):
-      print('Invalid input -- Please select the correct country name')
-    else:
-      rwanda_cases = self.covid.get_status_by_country_name("rwanda")
-      confirmed, active, recovered, deaths = [rwanda_cases[k] for k in ('confirmed', 'active', 'recovered', 'deaths')]
-      print(f' Total Confirmed cases: {confirmed} \n Total Active cases: {active} \n Total Recovered cases: {recovered} \n Total Deaths: {deaths}')
+    return self.get_data('rwanda')
+
+  def get_tanzania_data(self):
+    return self.get_data('tanzania')
+
+  def get_uganda_data(self):
+    return self.get_data('uganda')
+
+  def get_mauritius_data(self):
+    return self.get_data('mauritius')
 
 
 
