@@ -4,7 +4,7 @@ A basic python program that give Covid19 report for 5 African Countries
 ## CLONE REPO   
 > clone the repo [Github](https://github.com/nicholas-karimi/covid-19-report.git)
 > to your local computer.
-> navigate to the cloned repo ** cd covid-19-report **
+> navigate to the cloned repo `cd covid-19-report`
 
 ### Install Necessary Package
 > to install the covid package, you'll need to create a virtual environment first.
@@ -15,4 +15,5 @@ A basic python program that give Covid19 report for 5 African Countries
 >  `pip install -r requirements.txt`
 
 ### RUNNING
+
 `python3 corona.py `
