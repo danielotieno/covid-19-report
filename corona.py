@@ -1,8 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
+import termplotlib as tpl
 from covid import Covid
-
-
 
 class CovidReport:
   """
@@ -26,6 +23,9 @@ class CovidReport:
     self.select_country = input('Please select one of the following countries: ---- [Kenya, Rwanda, Uganda, Tanzania, Mauritius] : ')
 
   def get_all_countries(self):
+    """
+    This is a method that checks user input country and return the data
+    """
     if(self.select_country.lower() == 'kenya'):
       return self.get_kenya_data()
 
@@ -42,6 +42,11 @@ class CovidReport:
       return self.get_mauritius_data()
 
   def get_data(self, country):
+    """
+    This is a method that fetch countries data.
+    The method returns confirmed, active, recovered, deaths data.
+
+    """
     change_case_to_lower = self.select_country.lower()
     if( change_case_to_lower != country or change_case_to_lower == ''):
       print('Invalid input -- Please select the correct country name')
@@ -52,29 +57,59 @@ class CovidReport:
     print('-----------------------------------------------------------------')
     descriptive_data = input('Do you want a descriptive report? Press (y/n): ')
     print('-----------------------------------------------------------------')
-    if(descriptive_data.lower() == 'y' or 'yes'):
+    if(descriptive_data.lower() == 'y' or descriptive_data == 'yes'):
       active_cases_in_percentage = (active / confirmed) * 100
       recovered_cases_in_percentage = (recovered / confirmed) * 100
       case_fatality_ratio = (deaths / confirmed) * 100
       print(f' Active Cases in %: {active_cases_in_percentage}% \n Recovered Cases in %: {recovered_cases_in_percentage}% \n Fatality Ratio: {case_fatality_ratio}%')
 
+      print('-----------------------------------------------------------------')
+
+      fig = tpl.figure()
+      fig.barh(
+          [active, confirmed, deaths, recovered],
+          ['Active', 'Confirmed', 'Fatality', 'Recovered'],
+          force_ascii=True
+      )
+      fig.show()
+    else:
+      print('Bye Bye!!! Thank you for checking with us!')
+
 
   def get_kenya_data(self):
+    """
+    This is a method that return Kenya Covid-19 data
+
+    """
     return self.get_data('kenya')
 
   def get_rwanda_data(self):
+    """
+    This is a method that return Rwanda Covid-19 data
+
+    """
     return self.get_data('rwanda')
 
   def get_tanzania_data(self):
+    """
+    This is a method that return Tanzania Covid-19 data
+
+    """
     return self.get_data('tanzania')
 
   def get_uganda_data(self):
+    """
+    This is a method that return Uganda Covid-19 data
+
+    """
     return self.get_data('uganda')
 
   def get_mauritius_data(self):
+    """
+    This is a method that return Mauritius Covid-19 data
+
+    """
     return self.get_data('mauritius')
-
-
 
 
 def main():
