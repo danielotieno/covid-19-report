@@ -1,4 +1,7 @@
+import matplotlib.pyplot as plt
+import numpy as np
 from covid import Covid
+
 
 
 class CovidReport:
@@ -19,7 +22,7 @@ class CovidReport:
       user_input: String
 
     """
-    print('---------------WELCOME TO COVID-19 REPORT--------------')
+    print('----------------------WELCOME TO COVID-19 REPORT-----------------------------')
     self.select_country = input('Please select one of the following countries: ---- [Kenya, Rwanda, Uganda, Tanzania, Mauritius] : ')
 
   def get_all_countries(self):
@@ -46,6 +49,14 @@ class CovidReport:
       country_cases = self.covid.get_status_by_country_name(country)
       confirmed, active, recovered, deaths = [country_cases[k] for k in ('confirmed', 'active', 'recovered', 'deaths')]
       print(f' Total Confirmed cases: {confirmed} \n Total Active cases: {active} \n Total Recovered cases: {recovered} \n Total Deaths: {deaths}')
+    print('-----------------------------------------------------------------')
+    descriptive_data = input('Do you want a descriptive report? Press (y/n): ')
+    print('-----------------------------------------------------------------')
+    if(descriptive_data.lower() == 'y' or 'yes'):
+      active_cases_in_percentage = (active / confirmed) * 100
+      recovered_cases_in_percentage = (recovered / confirmed) * 100
+      case_fatality_ratio = (deaths / confirmed) * 100
+      print(f' Active Cases in %: {active_cases_in_percentage}% \n Recovered Cases in %: {recovered_cases_in_percentage}% \n Fatality Ratio: {case_fatality_ratio}%')
 
 
   def get_kenya_data(self):
