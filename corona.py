@@ -25,21 +25,22 @@ class CovidReport:
   def get_all_countries(self):
     """
     This is a method that checks user input country and return the data
+
     """
     if(self.select_country.lower() == 'kenya'):
-      return self.get_kenya_data()
+      return self.get_country_data('kenya')
 
     if(self.select_country.lower() == 'rwanda'):
-      return self.get_rwanda_data()
+      return self.get_country_data('rwanda')
 
     if(self.select_country.lower() == 'uganda'):
-      return self.get_uganda_data()
+      return self.get_country_data('uganda')
 
     if(self.select_country.lower() == 'tanzania'):
-      return self.get_tanzania_data()
+      return self.get_country_data('tanzania')
 
     if(self.select_country.lower() == 'mauritius'):
-      return self.get_mauritius_data()
+      return self.get_country_data('mauritius')
 
   def get_data(self, country):
     """
@@ -75,42 +76,12 @@ class CovidReport:
     else:
       print('Bye Bye!!! Thank you for checking with us!')
 
-
-  def get_kenya_data(self):
+  def get_country_data(self, country):
     """
-    This is a method that return Kenya Covid-19 data
-
-    """
-    return self.get_data('kenya')
-
-  def get_rwanda_data(self):
-    """
-    This is a method that return Rwanda Covid-19 data
+    This is a method that return Country Covid-19 data
 
     """
-    return self.get_data('rwanda')
-
-  def get_tanzania_data(self):
-    """
-    This is a method that return Tanzania Covid-19 data
-
-    """
-    return self.get_data('tanzania')
-
-  def get_uganda_data(self):
-    """
-    This is a method that return Uganda Covid-19 data
-
-    """
-    return self.get_data('uganda')
-
-  def get_mauritius_data(self):
-    """
-    This is a method that return Mauritius Covid-19 data
-
-    """
-    return self.get_data('mauritius')
-
+    return self.get_data(country)
 
 def main():
   demo = CovidReport()
