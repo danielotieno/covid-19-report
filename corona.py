@@ -84,8 +84,8 @@ class CovidReport:
     return self.get_data(country)
 
 def main():
-  demo = CovidReport()
-  demo.get_all_countries()
+  report = CovidReport()
+  report.get_all_countries()
 
 
 if __name__ == "__main__":
